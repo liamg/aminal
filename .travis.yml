@@ -34,7 +34,7 @@ env:
   global:
   - secure: "pdRpTOGQSUgbC9tK37voxUYJHMWDPJEmdMhNBsljpP9VnxxbR6JEFwvOQEmUHGlsYv8jma6a17jE60ngVQk8QP12cPh48i2bdbVgym/zTUOKFawCtPAzs8i7evh0di5eZ3uoyc42kG4skc+ePuVHbXC8jDxwaPpMqSHD7QyQc1/6ckI9LLkyWUqhnJJXkVwhmI74Aa1Im6QhywAWFMeTBRRL02cwr6k7VKSYOn6yrtzJRCALFGpZ/n58lPrpDxN7W8o+HRQP89wIDy8FyNeEPdmqGFNfMHDvI3oJRN4dGC4H9EkKf/iGuNJia1Bs+MgaG9kKlMHsI6Fkh5uw9KNTvC1llx43VRQJzm26cn1CpRxxRtF4F8lqkpY4tHjxxCitV+98ddW8jdmQYyx+LeueC5wqlO9g2M5L3oXsGMqZ++mDRDa8oQoQAVUSVtimeO8ODXFuVNR8TlupP0Cthgucil63VUZfAD8EHc2zpRSFxfYByDH53uMEinn20uovL6W42fqgboC43HOnR6aVfSANPsBFDlcpZFa2BY5RkcKyYdaLkucy0DKJ946UDfhOu6FNm0GPHq5HcgWkLojNF0dEFgG6J+SGQGiPjxTlHP/zoe61qMlWu+fYRXQnKWZN5Kk0T1TbAk6pKSE6wRLG8ddxvMg+eVpGLT+gAvQdrrkMFvs="
 before_deploy:
-  - export CHANGELOG=$(git log $(git describe --abbrev=0 --tags "${TRAVIS_TAG}^")..$TRAVIS_TAG --pretty=format:'<li> <a href="http://github.com/liamg/aminal/commit/%H">view commit &bull;</a> %s</li> ' --reverse | while read line; do echo -n "$line "; done)
+  - export CHANGELOG=$(git log $(git describe --abbrev=0 --tags "${TRAVIS_TAG}^")..$TRAVIS_TAG --pretty=format:'<li> <a href="http://github.com/liamg/aminal/commit/%H">view commit &bull;</a> %s</li>%n ' --reverse | while read line; do echo -n "$line "; done)
 deploy:
   - provider: releases
     skip_cleanup: true
