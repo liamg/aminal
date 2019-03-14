@@ -62,7 +62,7 @@ func send(terminal *terminal.Terminal, cmd string) {
 }
 
 func enter(terminal *terminal.Terminal) {
-	terminal.Write([]byte("\n"))
+	terminal.WriteReturn()
 }
 
 func validateScreen(img string) {
@@ -173,12 +173,15 @@ func TestSixel(t *testing.T) {
 			guiRef = g
 
 			sleep()
-			send(term, "export PS1='> '\n")
+			send(term, "export PS1='> '")
+			term.WriteReturn()
 			sleep()
-			send(term, "clear\n")
+			send(term, "clear")
+			term.WriteReturn()
 			sleep()
-			send(term, "cat example.sixel\n")
-			sleep(4)
+			send(term, "cat example.sixel")
+			term.WriteReturn()
+			sleep(5)
 
 			guiRef.Screenshot("test-sixel.png")
 			validateScreen("test-sixel.png")
