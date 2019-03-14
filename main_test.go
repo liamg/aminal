@@ -27,7 +27,7 @@ func terminate(msg string) int {
 }
 
 func sleep(seconds ...int) {
-	count := 3
+	count := 2
 	if len(seconds) > 0 {
 		count = seconds[0]
 	}
